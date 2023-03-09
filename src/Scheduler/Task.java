@@ -26,7 +26,7 @@ public class Task {
     public Task(String name, int time){
         this.name = name;
         this.time = time;
-        this.frequency = 0;
+        this.frequency = 1;
         this.priority = 0;
         this.on_weekend = false;
     }

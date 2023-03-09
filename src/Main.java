@@ -8,10 +8,10 @@ import Scheduler.TaskScheduler;
 public class Main{
     public static void main(String[] args) {
         
-        Task t1 = new Task("NPTEL", 2, 0,0,false);
-        Task t2 = new Task("Blender", 1, 0,0,false);
-        Task t3 = new Task("Internship", 3, 0,0,false);
-        Task t4 = new Task("College", 2, 0,0,false);
+        Task t1 = new Task("NPTEL", 2, 5,4,false);
+        Task t2 = new Task("Blender", 1, 3,1,false);
+        Task t3 = new Task("Internship", 3, 5,5,false);
+        Task t4 = new Task("College", 2, 3,2,false);
         Task t5 = new Task("DSA", 1);
         Task t6 = new Task("Project", 1);
         // Task t4 = GenerateTaskFromUserInput();
@@ -29,14 +29,14 @@ public class Main{
         ts.Addtask(t6);
         // TaskScheduler ts_list = new TaskScheduler(TaskList);
 
-        // ts.Addtask(TaskList);
+        // ts.Addtask(TaskList);        
 
         Schedule s = ts.GenerateSchedule(5);
         // Schedule s_list = ts_list.GenerateSchedule();
         // System.out.println( "Number of tasks in Schedule : " + ts.TaskList.size());        
         s.ShowSchedule(timeOffset);
-        System.out.println("Number of days in schedule");
-        System.out.println(s.daysInSchedule);
+        // System.out.println("Number of days in schedule");
+        // System.out.println(s.daysInSchedule);
 
         // System.out.println(s.ScheduleTable.get(0).size());
         // System.out.println("This second schedule is : " + s_list.isPossible);

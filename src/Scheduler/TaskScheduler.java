@@ -1,5 +1,7 @@
 package Scheduler;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class TaskScheduler {
     public ArrayList<Task> TaskList;
@@ -30,11 +32,27 @@ public class TaskScheduler {
         }
     }
 
+    private void sortTasks(){
+        Collections.sort(TaskList, new Comparator<Task>() {
+            @Override
+            public int compare(Task t1, Task t2){
+                if(t1.priority > t2.priority)
+                    return -1;
+                return 1;
+            }
+        });
+        System.out.println("Task List is now sorted");
+        for(Task t : TaskList)
+            System.out.println(t.name);
+    }
+
     public Schedule GenerateSchedule(){
         ArrayList<ArrayList<StoredTask>> ScheduleTable = new ArrayList<ArrayList<StoredTask>>(7);
         
         ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
         
+        sortTasks();
+
         int Lrange = 0, Urange = 0, index=0, days = 0, temp_index = -1, count = 0, n = TaskList.size();
         StoredTask st;
 
