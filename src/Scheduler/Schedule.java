@@ -1,15 +1,18 @@
 package Scheduler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Schedule {
     
     public int NumOfTasks;  
     public int daysInSchedule;
     public ArrayList<ArrayList<StoredTask>> ScheduleTable;
+    public HashMap<String , Integer> taskFrequency;
 
-    public Schedule(ArrayList<ArrayList<StoredTask>> ScheduleTable, int NumOfTasks){        
+    public Schedule(ArrayList<ArrayList<StoredTask>> ScheduleTable, HashMap<String , Integer> taskFrequency, int NumOfTasks){        
         this.ScheduleTable = ScheduleTable;
+        this.taskFrequency = taskFrequency;
         this.NumOfTasks = NumOfTasks;
         this.daysInSchedule = ScheduleTable.size();
     }
@@ -58,6 +61,13 @@ public class Schedule {
             System.out.println("\nNumber of tasks : " + d.size());
             System.out.println("_______________________________________________");
             
+        }
+    }
+
+    public void showFrequency(){
+        System.out.println("Number of times each task is achieved in " + daysInSchedule + " days");
+        for(String i : taskFrequency.keySet()){
+            System.out.println(i + " - " + taskFrequency.get(i));
         }
     }
 }

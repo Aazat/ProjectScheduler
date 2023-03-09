@@ -34,6 +34,8 @@ public class Main{
         Schedule s = ts.GenerateSchedule();
         // Schedule s_list = ts_list.GenerateSchedule();
         // System.out.println( "Number of tasks in Schedule : " + ts.TaskList.size());        
+        s.showFrequency();
+        System.out.println();
         s.ShowSchedule(timeOffset);
         // System.out.println("Number of days in schedule");
         // System.out.println(s.daysInSchedule);
