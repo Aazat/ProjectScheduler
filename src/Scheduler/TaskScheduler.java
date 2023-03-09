@@ -100,7 +100,7 @@ public class TaskScheduler {
                 
             }
         }
-        Schedule s = new Schedule(ScheduleTable, n);
+        Schedule s = new Schedule(ScheduleTable, taskFrequency, n);
         return s;
     }
 

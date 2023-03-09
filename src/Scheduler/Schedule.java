@@ -10,8 +10,9 @@ public class Schedule {
     public ArrayList<ArrayList<StoredTask>> ScheduleTable;
     public HashMap<String , Integer> taskFrequency;
 
-    public Schedule(ArrayList<ArrayList<StoredTask>> ScheduleTable, int NumOfTasks){        
+    public Schedule(ArrayList<ArrayList<StoredTask>> ScheduleTable, HashMap<String , Integer> taskFrequency, int NumOfTasks){        
         this.ScheduleTable = ScheduleTable;
+        this.taskFrequency = taskFrequency;
         this.NumOfTasks = NumOfTasks;
         this.daysInSchedule = ScheduleTable.size();
     }
