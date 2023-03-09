@@ -42,9 +42,9 @@ public class TaskScheduler {
                 return 1;
             }
         });
-        System.out.println("Task List is now sorted");
-        for(Task t : TaskList)
-            System.out.println(t.name);
+        // System.out.println("Task List is now sorted");
+        // for(Task t : TaskList)
+        //     System.out.println(t.name);
     }
 
     private HashMap<String , Integer> initHashMap(){
