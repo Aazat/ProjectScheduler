@@ -67,7 +67,7 @@ public class Schedule {
     public void showFrequency(){
         System.out.println("Number of times each task is achieved in " + daysInSchedule + " days");
         for(String i : taskFrequency.keySet()){
-            System.out.println(i + " - " + taskFrequency.get(i));
+            System.out.println( '\t'+ i + " - " + taskFrequency.get(i));
         }
     }
 }
