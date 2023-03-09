@@ -51,8 +51,6 @@ public class TaskScheduler {
         
         ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
         
-        HashMap<String , Integer> taskFrequency = initHashMap();
-    
         sortTasks();
 
         int Lrange = 0, Urange = 0, index=0, days = 0, temp_index = -1, count = 0, n = TaskList.size();
