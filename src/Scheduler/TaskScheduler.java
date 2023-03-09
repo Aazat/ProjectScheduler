@@ -61,10 +61,8 @@ public class TaskScheduler {
         ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
         
         HashMap<String , Integer> taskFrequency = initHashMap();
-        
-
+    
         sortTasks();
-
 
         int Lrange = 0, Urange = 0, index=0, days = 0, temp_index = -1, count = 0, n = TaskList.size();
         StoredTask st;
@@ -108,6 +106,10 @@ public class TaskScheduler {
         ArrayList<ArrayList<StoredTask>> ScheduleTable = new ArrayList<ArrayList<StoredTask>>(DaysInSchedule);
 
         ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
+
+        HashMap<String , Integer> taskFrequency = initHashMap();
+    
+        sortTasks();
         
         int Lrange = 0, Urange = 0, index=0, days = 0, temp_index = -1, count = 0, n = TaskList.size();
         StoredTask st;
@@ -117,6 +119,7 @@ public class TaskScheduler {
 
             if( (Urange + t.time*60) <= workingTime*60){            
                 Urange += t.time*60;
+                taskFrequency.put(t.name, taskFrequency.get(t.name) + 1);
                 st = new StoredTask(t, Lrange, Urange);
                 DailySchedules.add(st);                
                 Urange += restInterval;
@@ -143,7 +146,7 @@ public class TaskScheduler {
             }
         }
         
-        Schedule s = new Schedule(ScheduleTable, TaskList.size());
+        Schedule s = new Schedule(ScheduleTable, taskFrequency,TaskList.size());
         return s;
     }
 }
