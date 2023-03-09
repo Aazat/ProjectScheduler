@@ -31,7 +31,7 @@ public class Main{
 
         // ts.Addtask(TaskList);        
 
-        Schedule s = ts.GenerateSchedule(5);
+        Schedule s = ts.GenerateSchedule();
         // Schedule s_list = ts_list.GenerateSchedule();
         // System.out.println( "Number of tasks in Schedule : " + ts.TaskList.size());        
         s.ShowSchedule(timeOffset);

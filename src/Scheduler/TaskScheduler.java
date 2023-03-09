@@ -41,16 +41,15 @@ public class TaskScheduler {
                 return 1;
             }
         });
-        System.out.println("Task List is now sorted");
-        for(Task t : TaskList)
-            System.out.println(t.name);
+        // System.out.println("Task List is now sorted");
+        // for(Task t : TaskList)
+        //     System.out.println(t.name);
     }
 
     public Schedule GenerateSchedule(){
         ArrayList<ArrayList<StoredTask>> ScheduleTable = new ArrayList<ArrayList<StoredTask>>(7);
         
-        ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
-        
+        ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();        
         sortTasks();
 
         int Lrange = 0, Urange = 0, index=0, days = 0, temp_index = -1, count = 0, n = TaskList.size();
