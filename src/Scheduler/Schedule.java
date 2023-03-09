@@ -1,12 +1,14 @@
 package Scheduler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Schedule {
     
     public int NumOfTasks;  
     public int daysInSchedule;
     public ArrayList<ArrayList<StoredTask>> ScheduleTable;
+    public HashMap<String , Integer> taskFrequency;
 
     public Schedule(ArrayList<ArrayList<StoredTask>> ScheduleTable, int NumOfTasks){        
         this.ScheduleTable = ScheduleTable;

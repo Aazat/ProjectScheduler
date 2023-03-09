@@ -1,5 +1,6 @@
 package Scheduler;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -46,12 +47,24 @@ public class TaskScheduler {
             System.out.println(t.name);
     }
 
+    private HashMap<String , Integer> initHashMap(){
+        HashMap<String , Integer> TaskFrequency = new HashMap<String, Integer>(TaskList.size());
+        for(Task t : TaskList){
+            TaskFrequency.put(t.name, 0);
+        }
+        return TaskFrequency;
+
+    }
     public Schedule GenerateSchedule(){
         ArrayList<ArrayList<StoredTask>> ScheduleTable = new ArrayList<ArrayList<StoredTask>>(7);
         
         ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
         
+        HashMap<String , Integer> taskFrequency = initHashMap();
+        
+
         sortTasks();
+
 
         int Lrange = 0, Urange = 0, index=0, days = 0, temp_index = -1, count = 0, n = TaskList.size();
         StoredTask st;
@@ -61,6 +74,7 @@ public class TaskScheduler {
 
             if( (Urange + t.time*60) <= workingTime*60){            
                 Urange += t.time*60;
+                taskFrequency.put(t.name, taskFrequency.get(t.name) + 1);
                 st = new StoredTask(t, Lrange, Urange);
                 DailySchedules.add(st);                
                 Urange += restInterval;
