@@ -40,6 +40,9 @@ public class Main{
         s.showFrequency();
         System.out.println();
         s.ShowSchedule(timeOffset);
+        
+        // int dsa_freq = s.taskFrequency("DSA");
+        // System.out.println("DSA frequency is : " + dsa_freq);
         // System.out.println("Number of days in schedule");
         // System.out.println(s.daysInSchedule);
 

@@ -70,4 +70,8 @@ public class Schedule {
             System.out.println( '\t'+ i + " - " + taskFrequency.get(i));
         }
     }
+
+    public int taskFrequency(String name){
+        return taskFrequency.get(name);
+    }
 }
