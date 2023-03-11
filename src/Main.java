@@ -68,7 +68,7 @@ public class Main{
             System.out.println("Enter frequency (per week)");
             frequency = scan.nextInt();
 
-            System.out.println("Enter priority of task");
+            System.out.println("Enter priority of task (some integer value)");
             priority = scan.nextInt();
 
             String weekend_response = "";
