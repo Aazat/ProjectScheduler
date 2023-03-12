@@ -186,4 +186,43 @@ public class TaskScheduler {
         return s;
 
     }
+
+    public Schedule frequencyScheduler(int DaysInSchedule){
+        ArrayList<ArrayList<StoredTask>> ScheduleTable = new ArrayList<ArrayList<StoredTask>>(DaysInSchedule);
+
+        ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
+        
+        for(int i = 0; i < DaysInSchedule; i++){
+            ScheduleTable.add(new ArrayList<StoredTask>());
+        }
+        
+        HashMap<String, Integer> TaskFrequency = initHashMap();
+        sortTasks();
+
+        int UrangeArray[] = new int[7];      // or DaysInSchedule if that is used
+        int n = TaskList.size(), Lrange = 0, Urange = 0, schedule_index = 0, task_index = 0, freq = 0;
+
+        for(Task t : TaskList){
+            for(freq = t.frequency; schedule_index < DaysInSchedule & freq > 0; schedule_index += (schedule_index + 1)%7, freq-- ){
+                if(UrangeArray[schedule_index] + t.time <= workingTime*60){
+                    
+                    Lrange = UrangeArray[schedule_index];
+                    Urange = Lrange + t.time;
+                    // cannot do it this way... add for loop to add lists.
+                    ScheduleTable.get(schedule_index).add(new StoredTask(t, Lrange, Urange));
+                    
+                    Urange += restInterval;
+                    UrangeArray[schedule_index] = Urange;                    
+                }
+                else{
+                    // How to handle un-assigned tasks?
+                }
+            }
+        }
+
+        Schedule s = new Schedule(ScheduleTable, TaskFrequency, TaskList.size());
+        return s;
+
+    }
+
 }
