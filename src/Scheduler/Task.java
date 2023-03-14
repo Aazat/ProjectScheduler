@@ -18,7 +18,7 @@ public class Task {
     public Task(int time){
         this.name = "something";
         this.time = time;
-        this.frequency = 0;
+        this.frequency = 1;
         this.priority = 0;
         this.on_weekend = false;
     }
