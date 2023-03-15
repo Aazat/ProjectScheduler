@@ -9,6 +9,7 @@ public class Schedule {
     public int daysInSchedule;
     public ArrayList<ArrayList<StoredTask>> ScheduleTable;
     public HashMap<String , Integer> taskFrequency;
+    private String days[] = {"Monday", "Tuesday", "Wednesday", "Thurday", "Friday", "Saturday", "Sunday"};
 
     public Schedule(ArrayList<ArrayList<StoredTask>> ScheduleTable, HashMap<String , Integer> taskFrequency, int NumOfTasks){        
         this.ScheduleTable = ScheduleTable;
@@ -33,7 +34,7 @@ public class Schedule {
         System.out.println("Maximum Task achieved in a day : " + maxNumofTaskInaDay());
         
         for(ArrayList<StoredTask> d : ScheduleTable){
-            System.out.println("Schedule for Day : " + i + "\n");
+            System.out.println("Schedule for : " + days[i-1] + "\n");
             
             i++;
             for(StoredTask st : d){
@@ -49,9 +50,10 @@ public class Schedule {
     public void ShowSchedule(int offset){
         System.out.println("Number of Tasks in Schedule : " + NumOfTasks);
         System.out.println("Maximum Task achieved in a day : " + maxNumofTaskInaDay());
+        System.out.println("_______________________________________________");
         int i = 1;
         for(ArrayList<StoredTask> d : ScheduleTable){
-            System.out.println("Schedule for Day : " + i + "\n");
+            System.out.println("Schedule for " + days[i-1] + " :\n");
             
             i++;
             for(StoredTask st : d){

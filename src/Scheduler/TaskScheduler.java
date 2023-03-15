@@ -152,7 +152,7 @@ public class TaskScheduler {
     public Schedule frequencyScheduler(){
         ArrayList<ArrayList<StoredTask>> ScheduleTable = new ArrayList<ArrayList<StoredTask>>(7);
 
-        ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
+        // ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
         
         for(int i = 0; i < 7; i++){
             ScheduleTable.add(new ArrayList<StoredTask>());
@@ -162,22 +162,30 @@ public class TaskScheduler {
         sortTasks();
 
         int UrangeArray[] = new int[7];      // or DaysInSchedule if that is used
-        int n = TaskList.size(), Lrange = 0, Urange = 0, schedule_index = 0, task_index = 0, freq = 0;
+        int n = ScheduleTable.size(), Lrange = 0, Urange = 0, schedule_index = 0, temp_index = -1, freq = 0, count = 0;
 
         for(Task t : TaskList){
-            for(freq = t.frequency; schedule_index < 7 & freq > 0; schedule_index += (schedule_index + 1)%7, freq-- ){
-                if(UrangeArray[schedule_index] + t.time <= workingTime*60){
+            for(freq = t.frequency; schedule_index < 7 && freq > 0; schedule_index = (schedule_index + 1)%7, freq-- ){
+                if(UrangeArray[schedule_index] + t.time*60 <= workingTime*60){
                     
                     Lrange = UrangeArray[schedule_index];
-                    Urange = Lrange + t.time;
-                    // cannot do it this way... add for loop to add lists.
+                    Urange = Lrange + t.time*60;                    
+                    TaskFrequency.put(t.name, TaskFrequency.get(t.name) + 1);
                     ScheduleTable.get(schedule_index).add(new StoredTask(t, Lrange, Urange));
                     
                     Urange += restInterval;
                     UrangeArray[schedule_index] = Urange;                    
                 }
-                else{
+                else if (schedule_index == (temp_index+(n-1))%n){
                     // How to handle un-assigned tasks?
+                    // cycle through the schedule to find vacancy until we come back to same day/schedule_index
+                    break;      // just move on to the next task by breaking out of the current loop.
+                }
+                else{
+                    count++;
+                    if(count == 1){
+                        temp_index = schedule_index;
+                    }
                 }
             }
         }
@@ -190,7 +198,7 @@ public class TaskScheduler {
     public Schedule frequencyScheduler(int DaysInSchedule){
         ArrayList<ArrayList<StoredTask>> ScheduleTable = new ArrayList<ArrayList<StoredTask>>(DaysInSchedule);
 
-        ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
+        // ArrayList<StoredTask> DailySchedules = new ArrayList<StoredTask>();
         
         for(int i = 0; i < DaysInSchedule; i++){
             ScheduleTable.add(new ArrayList<StoredTask>());
@@ -199,23 +207,32 @@ public class TaskScheduler {
         HashMap<String, Integer> TaskFrequency = initHashMap();
         sortTasks();
 
-        int UrangeArray[] = new int[7];      // or DaysInSchedule if that is used
-        int n = TaskList.size(), Lrange = 0, Urange = 0, schedule_index = 0, task_index = 0, freq = 0;
+        int UrangeArray[] = new int[DaysInSchedule];     
+        int n = DaysInSchedule, Lrange = 0, Urange = 0, schedule_index = 0, temp_index = -1, freq = 0, count = 0;
 
         for(Task t : TaskList){
-            for(freq = t.frequency; schedule_index < DaysInSchedule & freq > 0; schedule_index += (schedule_index + 1)%7, freq-- ){
-                if(UrangeArray[schedule_index] + t.time <= workingTime*60){
+            for(freq = t.frequency; schedule_index < DaysInSchedule & freq > 0; schedule_index = (schedule_index + 1)%DaysInSchedule, freq-- ){
+                if(UrangeArray[schedule_index] + t.time*60 <= workingTime*60){
                     
                     Lrange = UrangeArray[schedule_index];
-                    Urange = Lrange + t.time;
+                    Urange = Lrange + t.time*60;
                     // cannot do it this way... add for loop to add lists.
+                    TaskFrequency.put(t.name, TaskFrequency.get(t.name) + 1);
                     ScheduleTable.get(schedule_index).add(new StoredTask(t, Lrange, Urange));
                     
                     Urange += restInterval;
                     UrangeArray[schedule_index] = Urange;                    
                 }
-                else{
+                else if (schedule_index == (temp_index+(n-1))%n){
                     // How to handle un-assigned tasks?
+                    // cycle through the schedule to find vacancy until we come back to same day/schedule_index
+                    break;      // just move on to the next task by breaking out of the current loop.
+                }
+                else{
+                    count++;
+                    if(count == 1){
+                        temp_index = schedule_index;
+                    }
                 }
             }
         }
