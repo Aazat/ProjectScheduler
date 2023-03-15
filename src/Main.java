@@ -12,15 +12,15 @@ public class Main{
         Task t2 = new Task("Blender", 1, 3,1,false);
         Task t3 = new Task("Internship", 3, 5,5,false);
         Task t4 = new Task("College", 2, 3,2,false);
-        Task t7 = new Task("RL/ML Programming", 1, 3, 2, false);
+        Task t7 = new Task("RL/ML Programming", 1, 3, 3, false);
         Task t5 = new Task("DSA", 1,5,2,false);
-        Task t6 = new Task("Project", 1);
+        Task t6 = new Task("Project", 1, 5, 2,false);
         
         // Task t4 = GenerateTaskFromUserInput();
         
         // ArrayList<Task> TaskList = GetMultipleInputs();
 
-        int restDays = 2, restInterval = 15, workingTime = 11, timeOffset = 10;
+        int restDays = 2, restInterval = 15, workingTime = 12, timeOffset = 10;
 
         TaskScheduler ts = new TaskScheduler(4, restDays, restInterval, workingTime);
         ts.Addtask(t1);
