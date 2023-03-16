@@ -12,7 +12,7 @@ public class Main{
         Task t2 = new Task("Blender", 1, 3,1,false);
         Task t3 = new Task("Internship", 3, 5,5,false);
         Task t4 = new Task("College", 2, 3,2,false);
-        Task t7 = new Task("RL/ML Programming", 1, 3, 3, false);
+        Task t7 = new Task("RL/ML Programming", 1, 5, 3, false);
         Task t5 = new Task("DSA", 1,5,2,false);
         Task t6 = new Task("Project", 1, 5, 2,false);
         
@@ -34,7 +34,7 @@ public class Main{
 
         // ts.Addtask(TaskList);        
 
-        Schedule s = ts.frequencyScheduler(5);
+        Schedule s = ts.frequencyScheduler(6);
         // Schedule s_list = ts_list.GenerateSchedule();
         // System.out.println( "Number of tasks in Schedule : " + ts.TaskList.size());        
         s.showFrequency();

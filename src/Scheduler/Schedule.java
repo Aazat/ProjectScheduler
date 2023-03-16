@@ -7,15 +7,17 @@ public class Schedule {
     
     public int NumOfTasks;  
     public int daysInSchedule;
+    public int restInterval;
     public ArrayList<ArrayList<StoredTask>> ScheduleTable;
     public HashMap<String , Integer> taskFrequency;
     private String days[] = {"Monday", "Tuesday", "Wednesday", "Thurday", "Friday", "Saturday", "Sunday"};
 
-    public Schedule(ArrayList<ArrayList<StoredTask>> ScheduleTable, HashMap<String , Integer> taskFrequency, int NumOfTasks){        
+    public Schedule(ArrayList<ArrayList<StoredTask>> ScheduleTable, HashMap<String , Integer> taskFrequency, int NumOfTasks, int restInterval){        
         this.ScheduleTable = ScheduleTable;
         this.taskFrequency = taskFrequency;
         this.NumOfTasks = NumOfTasks;
         this.daysInSchedule = ScheduleTable.size();
+        this.restInterval = restInterval;
     }
 
     public int maxNumofTaskInaDay(){

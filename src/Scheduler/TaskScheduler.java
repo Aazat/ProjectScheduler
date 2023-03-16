@@ -98,7 +98,7 @@ public class TaskScheduler {
                 
             }
         }
-        Schedule s = new Schedule(ScheduleTable, TaskFrequency, n);
+        Schedule s = new Schedule(ScheduleTable, TaskFrequency, n, restInterval);
         return s;
     }
 
@@ -145,7 +145,7 @@ public class TaskScheduler {
             }
         }
         
-        Schedule s = new Schedule(ScheduleTable, TaskFrequency, TaskList.size());
+        Schedule s = new Schedule(ScheduleTable, TaskFrequency, TaskList.size(), restInterval);
         return s;
     }
 
@@ -190,7 +190,7 @@ public class TaskScheduler {
             }
         }
 
-        Schedule s = new Schedule(ScheduleTable, TaskFrequency, TaskList.size());
+        Schedule s = new Schedule(ScheduleTable, TaskFrequency, TaskList.size(), restInterval);
         return s;
 
     }
@@ -237,7 +237,7 @@ public class TaskScheduler {
             }
         }
 
-        Schedule s = new Schedule(ScheduleTable, TaskFrequency, TaskList.size());
+        Schedule s = new Schedule(ScheduleTable, TaskFrequency, TaskList.size(), restInterval);
         return s;
 
     }
