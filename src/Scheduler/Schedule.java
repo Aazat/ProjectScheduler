@@ -1,6 +1,7 @@
 package Scheduler;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Schedule {
@@ -31,12 +32,12 @@ public class Schedule {
     }
 
     public void ShowSchedule(){
-        int i = 1;
+        int i = 0;
         System.out.println("Number of Tasks in Schedule : " + NumOfTasks);
         System.out.println("Maximum Task achieved in a day : " + maxNumofTaskInaDay());
         
         for(ArrayList<StoredTask> d : ScheduleTable){
-            System.out.println("Schedule for : " + days[i-1] + "\n");
+            System.out.println("Schedule for : " + days[i] + "\n");
             
             i++;
             for(StoredTask st : d){
@@ -53,9 +54,9 @@ public class Schedule {
         System.out.println("Number of Tasks in Schedule : " + NumOfTasks);
         System.out.println("Maximum Task achieved in a day : " + maxNumofTaskInaDay());
         System.out.println("_______________________________________________");
-        int i = 1;
+        int i = 0;
         for(ArrayList<StoredTask> d : ScheduleTable){
-            System.out.println("Schedule for " + days[i-1] + " :\n");
+            System.out.println("Schedule for " + days[i] + " :\n");
             
             i++;
             for(StoredTask st : d){
@@ -74,6 +75,40 @@ public class Schedule {
             System.out.println( '\t'+ i + " - " + taskFrequency.get(i));
         }
     }
+
+    public void printShuffledSchedule(int offset){
+        ArrayList<StoredTask> d;
+        System.out.println("Number of Tasks in Schedule : " + NumOfTasks);
+        System.out.println("Maximum Task achieved in a day : " + maxNumofTaskInaDay());
+        System.out.println("_______________________________________________");
+        int i = 0;
+        for(ArrayList<StoredTask> daily_schedule : ScheduleTable){
+            System.out.println("Schedule for " + days[i] + " :\n");
+            i++;
+            d = new ArrayList<>(daily_schedule);
+            Collections.shuffle(d);
+            
+            int urange = 0, lrange = 0;
+            for(StoredTask s : d){    
+                urange += s.time*60;        
+                s.showShuffledStoredTask(offset, lrange, urange);            
+                urange += restInterval;
+                lrange = urange;
+            }
+            System.out.println("\nNumber of tasks : " + d.size());
+            System.out.println("_______________________________________________");
+        }
+    }
+
+    // private void printSchedule(ArrayList<StoredTask> d, int offset){
+    //     int urange = 0, lrange = 0;
+    //     for(StoredTask s : d){    
+    //        urange += s.time;        
+    //        s.showShuffledStoredTask(offset, lrange, urange);            
+    //         urange += restInterval;
+    //         lrange = urange;
+    //     }
+    // }
 
     public int taskFrequency(String name){
         return taskFrequency.get(name);

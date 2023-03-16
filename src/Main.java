@@ -39,7 +39,8 @@ public class Main{
         // System.out.println( "Number of tasks in Schedule : " + ts.TaskList.size());        
         s.showFrequency();
         System.out.println();
-        s.ShowSchedule(timeOffset);
+        // s.ShowSchedule(timeOffset);   
+        s.printShuffledSchedule(timeOffset);     
         
         // int dsa_freq = s.taskFrequency("DSA");
         // System.out.println("DSA frequency is : " + dsa_freq);

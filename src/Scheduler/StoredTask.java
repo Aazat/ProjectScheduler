@@ -24,6 +24,12 @@ public class StoredTask extends Task {
         System.out.println("End Time :-" + timeConversion(Urange/60 +  offset) + ":" + (Urange%60));
     }
     
+    public void showShuffledStoredTask(int offset, int lrange, int urange){
+        System.out.println("____");
+        System.out.println("Start Time :- " + timeConversion(lrange/60 + offset) + ":" + (lrange%60) + " "+name);
+        System.out.println("End Time :-" + timeConversion(urange/60 +  offset) + ":" + (urange%60));
+    }
+
     private int timeConversion(int hour){
         if(hour == 12)
             return hour;
