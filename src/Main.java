@@ -20,7 +20,7 @@ public class Main{
         
         // ArrayList<Task> TaskList = GetMultipleInputs();
 
-        int restDays = 2, restInterval = 15, workingTime = 12, timeOffset = 10;
+        int restDays = 2, restInterval = 15, workingTime = 6, timeOffset = 12;
 
         TaskScheduler ts = new TaskScheduler(4, restDays, restInterval, workingTime);
         ts.Addtask(t1);
